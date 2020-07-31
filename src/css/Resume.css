@@ -1,0 +1,43 @@
+
+:root {
+    --max-height: 300px;
+}
+
+.profile-img {
+    border-radius: 50%;
+    border: 10px solid slategrey;
+    height: var(--max-height);
+}
+
+.horizontal-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-basis: auto;
+}
+
+.flex-item {
+    --flex-width: 200px;
+    height: var(--max-height);
+    max-width: var(--flex-width);
+    width: var(--flex-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flex-item .content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.detail-field p {
+    margin: 0;
+}
+
+.detail-field {
+    margin-bottom: 10px;
+}

@@ -1,13 +1,10 @@
 import React from 'react';
-import '../App.css';
+import '../css/App.css';
 import theme from './AppStyles.js';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Home from "./pages/Home";
-import Resume from "./pages/Resume";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
 
 
 function App() {

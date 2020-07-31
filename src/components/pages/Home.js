@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../App.css';
+import '../../css/App.css';
 import {StubbyTabs, StubbyTab} from '../StubbyTabs.js';
 import Resume from './Resume.js';
 import Projects from './Projects.js';
