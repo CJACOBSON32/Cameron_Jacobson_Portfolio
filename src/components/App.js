@@ -13,8 +13,9 @@ function App() {
             <CssBaseline />
             <Router>
                 <Switch>
-                    <Redirect exact from="/" to="/Resume" />
-                    <Route exact path="/:page?" render={props => <Home {...props}/>}/>
+                    <Redirect exact from="/" to="Cameron_Jacobson_Portfolio/Resume" />
+                    <Redirect exact from="/Cameron_Jacobson_Portfolio" to="Cameron_Jacobson_Portfolio/Resume" />
+                    <Route exact path="Cameron_Jacobson_Portfolio/:page?" render={props => <Home {...props}/>}/>
                 </Switch>
             </Router>
         </ThemeProvider>
