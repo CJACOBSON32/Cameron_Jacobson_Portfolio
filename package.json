@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://CJACOBSON32.github.io/Cameron_Jacobson_Portfolio",
   "dependencies": {
     "@material-ui/core": "^4.10.0",
