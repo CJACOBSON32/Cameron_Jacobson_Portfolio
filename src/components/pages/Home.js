@@ -13,21 +13,21 @@ const Home = props => {
     const { params } = match;
     const { page } = params;
 
-    const indexToPageName = {
+    const pageNameToIndex = {
         Resume: 0,
         Projects: 1,
         Contact: 2
     };
 
-    const pageNameToIndex = {
+    const indexToPageName = {
         0 : "Resume",
         1 : "Projects",
         2 : "Contact"
     };
 
-    const [selectedTab, setSelectedTab] = React.useState(indexToPageName[page]);
+    const [selectedTab, setSelectedTab] = React.useState(pageNameToIndex[page]);
     const handleChange = (event, newValue) => {
-        history.push(`/${pageNameToIndex[newValue]}`)
+        history.push(`/Cameron_Jacobson_Portfolio/${indexToPageName[newValue]}`)
         setSelectedTab(newValue);
     };
 
