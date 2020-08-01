@@ -27,7 +27,6 @@ const Home = props => {
 
     const [selectedTab, setSelectedTab] = React.useState(pageNameToIndex[page]);
     const handleChange = (event, newValue) => {
-        //console.log(`/Cameron_Jacobson_Portfolio/${indexToPageName[newValue]}`);
         history.push(`/Cameron_Jacobson_Portfolio/${indexToPageName[newValue]}`)
         setSelectedTab(newValue);
     };

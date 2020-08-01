@@ -15,6 +15,7 @@
     justify-content: center;
     gap: 40px;
     flex-basis: auto;
+    align-items: stretch;
 }
 
 .flex-item {
