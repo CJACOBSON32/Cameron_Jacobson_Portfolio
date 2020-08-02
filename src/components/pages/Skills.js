@@ -56,11 +56,8 @@ export default function Skills(props) {
         <Box {...props}>
             <Container style={{
                 display: "flex",
-                flexDirection: "column",
                 flexWrap: "wrap",
-                maxHeight: 400,
-                gap: 10,
-                transform: 'translate(4%,0)'
+                gap: 10
             }}>
                 {skillList}
             </Container>

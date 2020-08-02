@@ -28,7 +28,6 @@ const StubbyTab = withStyles((theme) => ({
         marginRight: theme.spacing(spacing) / 2,
         marginLeft: theme.spacing(spacing) / 2,
         minWidth: 10,
-        width: 200,
         '&:focus': {
             opacity: 1,
         },

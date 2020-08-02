@@ -11,11 +11,11 @@
 
 .horizontal-flex {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 40px;
     flex-basis: auto;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 
 .flex-item {
