@@ -2,6 +2,7 @@ import React from "react";
 import {animateScroll as scroll} from "react-scroll";
 import AppBar from "@material-ui/core/AppBar";
 import {StubbyTab, StubbyTabs} from "./StubbyTabs";
+import Container from "@material-ui/core/Container";
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -53,12 +54,14 @@ class NavBar extends React.Component {
     render() {
         return(
             <AppBar id="MainBar" className="App-header" position="sticky" style={{height: this.barHeight}}>
-                <StubbyTabs value={this.state.selectedTab} onChange={this.handleChange} centered={true}>
-                    <StubbyTab label="Profile"/>
-                    <StubbyTab label="Skills"/>
-                    <StubbyTab label="Projects"/>
-                    <StubbyTab label="Contact"/>
-                </StubbyTabs>
+                <Container>
+                    <StubbyTabs value={this.state.selectedTab} onChange={this.handleChange} centered={true} variant='fullWidth' style={{justifyContent: 'evenly-spaced'}}>
+                        <StubbyTab label="Profile"/>
+                        <StubbyTab label="Skills"/>
+                        <StubbyTab label="Projects"/>
+                        <StubbyTab label="Contact"/>
+                    </StubbyTabs>
+                </Container>
             </AppBar>
         );
     }

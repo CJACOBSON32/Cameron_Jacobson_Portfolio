@@ -28,8 +28,10 @@ class Boid {
             let theta = this.velocity.heading() + p5.radians(90);
             // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
 
-            p5.fill(100, 100);
-            p5.stroke(100,100);
+            let color = p5.color("rgba(82,108,193,50)");
+
+            p5.fill(color);
+            p5.stroke(color);
             p5.translate(this.position.x, this.position.y);
             p5.rotate(theta);
             p5.beginShape(p5.TRIANGLES);
@@ -39,6 +41,8 @@ class Boid {
             p5.endShape();
             p5.resetMatrix();
         }
+
+        //"#526cc1"
 
         this.run = function(boids) {
             this.flock(boids);
@@ -76,7 +80,7 @@ class Boid {
                 mouse = this.seek(mousePos).mult(-1);
 
             // Force weights
-            sep.mult(this.forceMultiplier*1.5);
+            sep.mult(this.forceMultiplier*2);
             ali.mult(this.forceMultiplier*1.0);
             coh.mult(this.forceMultiplier*1.0);
             mouse.mult(this.forceMultiplier*10);
