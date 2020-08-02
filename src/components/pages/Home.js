@@ -10,13 +10,7 @@ import Splash from "./Splash";
 import Profile from "./Profile";
 import Skills from "./Skills";
 import Section from "../Section";
-
-const pageNameToIndex = {
-    Profile: 0,
-    Skills: 1,
-    Projects: 2,
-    Contact: 3
-};
+import NavBar from "../NavBar";
 
 const sections = [
     "Profile",
@@ -29,46 +23,6 @@ const sections = [
 
 class Home extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {selectedTab: 0}
-        this.handleChange = this.handleChange.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
-    }
-
-    barHeight = 48;
-
-    handleChange = (event, newValue) => {
-        // history.push(`/${indexToPageName[newValue]}`)
-        window.removeEventListener('scroll', this.handleScroll);
-        this.setState({selectedTab: newValue});
-        let relativeElementPos = document.getElementById(sections[newValue]).getBoundingClientRect().y;
-        scroll.scrollTo(window.pageYOffset + relativeElementPos - this.barHeight);
-        setTimeout(() => window.addEventListener("scroll", this.handleScroll), 1000);
-    }
-
-    // Set the selected tab in the navbar to the current section when scrolling
-    handleScroll(event) {
-        for (let i = 0; i < sections.length; i++) {
-            let section = sections[i];
-            let boundingClient = document.getElementById(section).getBoundingClientRect();
-            if (boundingClient.bottom > this.barHeight) {
-                if (i !== this.state.selectedTab) {
-                    this.setState({selectedTab: pageNameToIndex[section]});
-                }
-                break;
-            }
-        }
-    }
-
-    componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
     render() {
 
         const lighterColor = "#2b2b2b";
@@ -77,14 +31,7 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <Splash/>
-                <AppBar id="MainBar" className="App-header" position="sticky" style={{height: this.barHeight}}>
-                    <StubbyTabs value={this.state.selectedTab} onChange={this.handleChange} centered={true}>
-                        <StubbyTab label="Profile"/>
-                        <StubbyTab label="Skills"/>
-                        <StubbyTab label="Projects"/>
-                        <StubbyTab label="Contact"/>
-                    </StubbyTabs>
-                </AppBar>
+                <NavBar sections = {sections}/>
                 <Profile style={{padding: padding, backgroundColor: lighterColor}} id="Profile"/>
                 <Section style={{padding: padding}} id="Skills" title="Skills">
                     <Skills/>
