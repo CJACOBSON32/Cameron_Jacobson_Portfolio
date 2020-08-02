@@ -11,11 +11,12 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <HashRouter>
-                <Switch>
-                    <Route exact path="/:page?" render={props => <Home {...props}/>}/>
-                </Switch>
-            </HashRouter>
+            {/*<HashRouter>*/}
+            {/*    <Switch>*/}
+            {/*        <Route exact path="/:page?" render={props => <Home {...props}/>}/>*/}
+            {/*    </Switch>*/}
+            {/*</HashRouter>*/}
+            <Home/>
         </ThemeProvider>
 
     );
