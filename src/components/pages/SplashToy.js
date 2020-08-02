@@ -28,8 +28,8 @@ class Boid {
             let theta = this.velocity.heading() + p5.radians(90);
             // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
 
-            p5.fill(200, 100);
-            p5.stroke(255);
+            p5.fill(100, 100);
+            p5.stroke(100,100);
             p5.translate(this.position.x, this.position.y);
             p5.rotate(theta);
             p5.beginShape(p5.TRIANGLES);
