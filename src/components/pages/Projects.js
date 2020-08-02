@@ -21,30 +21,32 @@ function Project(props) {
     );
 }
 
-function Projects() {
+class Projects extends React.Component {
 
-    const numberOfProjects = 9;
-    let projects = [];
+    render() {
+        const numberOfProjects = 9;
+        let projects = [];
 
-    for(let i=1; i<=numberOfProjects; i++) {
-        let title = `Project ${i}`;
-        projects.push(
-            <Project title={title}>
-                Lorem ipsum dolor sit amet, no cum clita consequat, nostrud tractatos adolescens eam ei. At consulatu
-                honestatis accommodare has. Ei cibo eirmod expetenda sit, ea choro dicam invidunt sit. Luptatum deseruisse
-                ut his, eum ne ponderum scriptorem repudiandae. Est ei accusata consulatu, dolor fabellas sit ut, vis ad
-                probo erant partem. Mea ea enim nibh fuisset.
-            </Project>
+        for(let i=1; i<=numberOfProjects; i++) {
+            let title = `Project ${i}`;
+            projects.push(
+                <Project title={title}>
+                    Lorem ipsum dolor sit amet, no cum clita consequat, nostrud tractatos adolescens eam ei. At consulatu
+                    honestatis accommodare has. Ei cibo eirmod expetenda sit, ea choro dicam invidunt sit. Luptatum deseruisse
+                    ut his, eum ne ponderum scriptorem repudiandae. Est ei accusata consulatu, dolor fabellas sit ut, vis ad
+                    probo erant partem. Mea ea enim nibh fuisset.
+                </Project>
+            );
+        }
+
+        return (
+            <Container>
+                <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap"}}>
+                    {projects}
+                </Box>
+            </Container>
         );
     }
-
-    return (
-        <Container>
-            <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap"}}>
-                {projects}
-            </Box>
-        </Container>
-    );
 }
 
 export default Projects;

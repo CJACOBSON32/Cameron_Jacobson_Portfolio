@@ -13,7 +13,6 @@ function App() {
             <CssBaseline />
             <HashRouter>
                 <Switch>
-                    <Redirect exact from="/" to="/Resume" />
                     <Route exact path="/:page?" render={props => <Home {...props}/>}/>
                 </Switch>
             </HashRouter>

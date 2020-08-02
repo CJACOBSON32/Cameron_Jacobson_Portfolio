@@ -6,9 +6,15 @@ import Projects from './Projects.js';
 import Contact from './Contact.js';
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import theme from "../AppStyles";
+import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom';
+import Splash from "./Splash";
 
-
-const Home = props => {
+function Home(props) {
     const { match, history } = props;
     const { params } = match;
     const { page } = params;
@@ -33,10 +39,8 @@ const Home = props => {
 
     return (
         <div className="Home">
-            <AppBar className="App-header" position="static">
-                <Typography variant="h2" component="div" align="center">
-                    Cameron Jacobson's Portfolio
-                </Typography>
+            <Splash/>
+            <AppBar id="MainBar" className="App-header" position="sticky">
                 <StubbyTabs value={selectedTab} onChange={handleChange} centered={true}>
                     <StubbyTab label="Resume"/>
                     <StubbyTab label="Projects"/>

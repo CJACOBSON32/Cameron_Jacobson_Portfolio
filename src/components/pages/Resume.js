@@ -6,7 +6,6 @@ import "../../css/Resume.css";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import theme from "../AppStyles";
-import {StarBorderRounded, StarRounded} from "@material-ui/icons";
 import Skills from "./Skills";
 
 const sectionTitle = {

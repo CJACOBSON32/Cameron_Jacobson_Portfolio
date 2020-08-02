@@ -33,6 +33,6 @@ const StubbyTab = withStyles((theme) => ({
             opacity: 1,
         },
     },
-}))((props) => <Tab /*disableRipple*/ {...props} />);
+}))((props) => <Tab disableRipple {...props} />);
 
 export {StubbyTab, StubbyTabs};
