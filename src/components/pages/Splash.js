@@ -21,7 +21,7 @@ function Splash() {
                 marginTop: "-100vh",
                 position: "relative"
             }}>
-                <Typography variant="h2" component="div">Cameron Jacobson's Portfolio</Typography>
+                <Typography variant="h2" component="div" style={{textAlign: "center"}}>Cameron Jacobson's Portfolio</Typography>
                 <ScrollLink activeClass="Active" to="MainBar" spy={true} smooth={true}>
                     <Button variant="outlined" style={{paddingRight: 5, borderColor: theme.palette.secondary.main, borderWidth: 3}}>
                         <Typography variant="h5">Enter</Typography>
