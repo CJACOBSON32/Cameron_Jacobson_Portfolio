@@ -34,17 +34,6 @@ class Boid {
             let theta = this.velocity.heading() + p5.radians(90);
 
             let color = p5.color("rgba(82,108,193,0.9)");
-            let lineColor = p5.color("rgb(255, 128, 26)");
-
-            // Draw lines between all boids in range with alphas inversely proportional to their distance
-            this.neighbors.forEach((boid, i) => {
-                // Need to check if their in range again because it may not have been updated
-                if (this.position.dist(boid.position) < this.neighborDist) {
-                    lineColor.alpha = 1 / (this.position.dist(boid.position) / 2);
-                    p5.stroke(lineColor);
-                    p5.line(this.renderPosition().x, this.renderPosition().y, boid.renderPosition().x, boid.renderPosition().y);
-                }
-            });
 
             p5.fill(color);
             p5.stroke(color);
@@ -58,6 +47,20 @@ class Boid {
             p5.resetMatrix();
         }
 
+        // Draw lines between all boids in range with alphas inversely proportional to their distance
+        this.renderLines = function() {
+            let lineColor = p5.color("rgb(255, 128, 26)");
+
+            this.neighbors.forEach((boid, i) => {
+                // Need to check if their in range again because it may not have been updated
+                if (this.position.dist(boid.position) < this.neighborDist) {
+                    lineColor.alpha = 1 / (this.position.dist(boid.position) / 2);
+                    p5.stroke(lineColor);
+                    p5.line(this.renderPosition().x, this.renderPosition().y, boid.renderPosition().x, boid.renderPosition().y);
+                }
+            });
+        }
+
         this.renderPosition = function() {
             return p5.createVector(this.position.x + this.chunk.flock.position.x, this.position.y + this.chunk.flock.position.x);
         }
@@ -66,8 +69,11 @@ class Boid {
             this.flock(boids);
             this.update();
             this.borders();
+            this.updateChunk();
+        }
 
-            // If this boids chunk is defined and it no longer contains this boid, move to the appropriate chunk
+        // If this boids chunk is defined and it no longer contains this boid, move to the appropriate chunk
+        this.updateChunk = function() {
             if(this.chunk !== undefined && !this.chunk.contains(this.position)) {
                 let flock = this.chunk.flock;
 
@@ -79,14 +85,12 @@ class Boid {
                 this.chunk.removeBoid(this.id);
                 newChunk.addBoid(this);
             }
-
-            this.render();
         }
 
         this.update = function() {
             this.velocity.add(this.acceleration);
             this.velocity.limit(this.maxSpeed);
-            this.position.add(this.velocity);
+            this.position.add(this.velocity.copy().mult(p5.deltaTime * 0.05));
             this.acceleration.mult(0);
         }
 
