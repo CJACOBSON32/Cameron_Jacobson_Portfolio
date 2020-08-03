@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import React from "react";
 import theme from "../AppStyles";
 import Card from "@material-ui/core/Card";
+import CSVToArray from "../utils/csvReader";
 
 function Skill(props) {
 
@@ -44,6 +45,8 @@ function Skill(props) {
 }
 
 export default function Skills(props) {
+    // Extract matrix of data from csv
+    CSVToArray()
 
     let skillList = [];
     for (let i=0; i<20; i++) {
