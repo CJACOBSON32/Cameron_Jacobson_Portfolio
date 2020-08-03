@@ -10,25 +10,41 @@ function subVects(v1,v2) {
 class Boid {
     constructor(p5, pos) {
         this.position = pos;
-
         this.velocity = p5.createVector(0,0);
         this.acceleration = p5.createVector(0,0);
 
+        this.neighbors = [];
+
+        // Constraints
         this.r = 7;
         this.maxSpeed = 3;
         this.maxForce = 0.03;
 
         this.neighborDist = 50;
-        this.desiredSeparation = 25;
+        this.desiredSeparation = 25;    // Should be less than neighborDist
 
-        this.forceMultiplier = 1;
+        this.forceMultiplier = 1;       // Multiplies all of the following forces
+        this.separationMultiplier = 2;  // Forces boids to separate to desiredSeparation
+        this.cohesionMultiplier = 0.1;  // Forces boids towards one another when within neighborDist
+        this.alignmentMultiplier = 0.2; // Forces boids to turn in the same direction as those within neighborDist
+        this.mouseMultiplier = 10;      // Forces boids away from the mouse. Make negative to attract them to the mouse
 
         this.render = function() {
             // Draw a triangle rotated in the direction of velocity
             let theta = this.velocity.heading() + p5.radians(90);
-            // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
 
-            let color = p5.color("rgba(82,108,193,50)");
+            let color = p5.color("rgba(82,108,193,0.9)");
+            let lineColor = p5.color("rgb(255, 128, 26)");
+
+            // Draw lines between all boids in range with alphas inversely proportional to their distance
+            this.neighbors.forEach((boid, i) => {
+                // Need to check if their in range again because it may not have been updated
+                if (this.position.dist(boid.position) < this.neighborDist) {
+                    lineColor.alpha = 1 / (this.position.dist(boid.position) / 2);
+                    p5.stroke(lineColor);
+                    p5.line(this.position.x, this.position.y, boid.position.x, boid.position.y);
+                }
+            });
 
             p5.fill(color);
             p5.stroke(color);
@@ -41,8 +57,6 @@ class Boid {
             p5.endShape();
             p5.resetMatrix();
         }
-
-        //"#526cc1"
 
         this.run = function(boids) {
             this.flock(boids);
@@ -71,19 +85,29 @@ class Boid {
         }
 
         this.flock = function(boids) {
-            let sep = this.separate(boids);
-            let ali = this.align(boids);
-            let coh = this.cohesion(boids);
+            // Get all boids within range
+            this.neighbors = [];
+            boids.forEach((boid, i) => {
+                let d = this.position.dist(boid.position);
+                if(d < this.neighborDist)
+                    this.neighbors.push(boid);
+            });
+
+            let sep = this.separate(this.neighbors);
+            let ali = this.align(this.neighbors);
+            let coh = this.cohesion(this.neighbors);
+
+            // Get mouse position and calculate a repulsion vector
             let mouse = p5.createVector(0,0);
             let mousePos = p5.createVector(p5.mouseX, p5.mouseY);
             if(this.position.dist(mousePos) < 200)
                 mouse = this.seek(mousePos).mult(-1);
 
             // Force weights
-            sep.mult(this.forceMultiplier*2);
-            ali.mult(this.forceMultiplier*1.0);
-            coh.mult(this.forceMultiplier*1.0);
-            mouse.mult(this.forceMultiplier*10);
+            sep.mult(this.forceMultiplier*this.separationMultiplier);
+            ali.mult(this.forceMultiplier*this.alignmentMultiplier);
+            coh.mult(this.forceMultiplier*this.cohesionMultiplier);
+            mouse.mult(this.forceMultiplier*this.mouseMultiplier);
 
             // Apply forces
             this.applyForce(sep);
@@ -148,7 +172,7 @@ class Boid {
             let count = 0;
             boids.forEach((other, i) => {
                 let d = this.position.dist(other.position);
-                if ((d > 0) && (d < this.neighborDist)) {
+                if (d > 0) {
                     sum.add(other.velocity);
                     count++;
                 }
@@ -173,11 +197,12 @@ class Boid {
             let count = 0;
             boids.forEach((other, i) => {
                 let d = this.position.dist(other.position);
-                if ((d > 0) && (d < this.neighborDist)) {
+                if (d > 0) {
                     sum.add(other.position); // Add position
                     count++;
                 }
             });
+
             if (count > 0) {
                 sum.div(count);
                 return this.seek(sum);  // Steer towards the position
