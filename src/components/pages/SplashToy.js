@@ -1,20 +1,19 @@
 import React from "react";
 import Sketch from "react-p5";
-import {setup, draw, windowResized, p5Functions} from './boids/BoidCanvas.js';
-import {animateScroll as scroll} from "react-scroll";
+import {setup, draw, windowResized, boidCanvas} from './boids/BoidCanvas.js';
 import {sections} from "./Home";
 
-var prevLoop = true;
+var prevLoop = false;
 
 class SplashToy extends React.Component {
 
     onScroll(event) {
         let boundingClient = document.getElementById(sections[0]).getBoundingClientRect()
         if (boundingClient.top < 10 && prevLoop) {
-            p5Functions.noLoop();
+            boidCanvas.noLoop();
             prevLoop = false;
         } else if (boundingClient.top >= 10 && !prevLoop) {
-            p5Functions.loop();
+            boidCanvas.loop();
             prevLoop = true;
         }
     }

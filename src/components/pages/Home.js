@@ -1,11 +1,7 @@
 import React from 'react';
 import '../../css/App.css';
-import {StubbyTabs, StubbyTab} from '../StubbyTabs.js';
 import Projects from './Projects.js';
 import Contact from './Contact.js';
-import AppBar from "@material-ui/core/AppBar";
-import { Link } from 'react-router-dom';
-import {animateScroll as scroll} from 'react-scroll';
 import Splash from "./Splash";
 import Profile from "./Profile";
 import Skills from "./Skills";

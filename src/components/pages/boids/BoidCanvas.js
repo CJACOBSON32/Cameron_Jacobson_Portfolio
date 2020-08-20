@@ -4,7 +4,7 @@ import Boid from "./Boid";
 let flock = undefined;
 let viewPortDimensions = undefined;
 let canvasParent = undefined;
-let p5Functions = undefined;
+let boidCanvas = undefined;
 
 function createFlock(p5) {
     let boidSize = 7;
@@ -38,7 +38,7 @@ const setup = (p5, canvasParentRef) => {
 
     createFlock(p5);
 
-    p5Functions = p5;
+    boidCanvas = p5;
 };
 
 let frame = 0;
@@ -76,4 +76,4 @@ const windowResized = (p5) => {
     createFlock(p5);
 }
 
-export {setup, draw, windowResized, p5Functions};
+export {setup, draw, windowResized, boidCanvas};
