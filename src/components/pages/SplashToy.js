@@ -8,7 +8,7 @@ var prevLoop = false;
 class SplashToy extends React.Component {
 
     onScroll(event) {
-        let boundingClient = document.getElementById(sections[0]).getBoundingClientRect()
+        let boundingClient = document.getElementById(sections[0]).getBoundingClientRect();
         if (boundingClient.top < 10 && prevLoop) {
             boidCanvas.noLoop();
             prevLoop = false;

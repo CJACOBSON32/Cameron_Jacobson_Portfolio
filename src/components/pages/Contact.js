@@ -28,19 +28,20 @@ function ContactButton(props) {
     );
 }
 
-function Contact() {
+class Contact extends React.Component {
 
-
-
-    return (
-        <Box style={{display: "flex", justifyContent: "center", alignItems: "center", gap: 50, flexDirection: "column"}}>
-            <Box style={{display: "flex", justifyContent: "center", alignItems: "center", gap: 60}}>
-                <ContactButton text="@CJACOBSON32" link="https://github.com/CJACOBSON32"><GitHubIcon fontSize="large"/></ContactButton>
-                <ContactButton text="chjacobson@wpi.edu" link="mailto:chjacobson@wpi.edu"><EmailIcon fontSize="large"/></ContactButton>
+    render() {
+        return (
+            <Box style={{display: "flex", alignItems: "center", gap: 50, flexDirection: "column" }}>
+                <Box style={{display: "flex", justifyContent: "center", alignItems: "center", gap: 60}}>
+                    <ContactButton text="@CJACOBSON32" link="https://github.com/CJACOBSON32"><GitHubIcon fontSize="large"/></ContactButton>
+                    <ContactButton text="chjacobson@wpi.edu" link="mailto:chjacobson@wpi.edu"><EmailIcon fontSize="large"/></ContactButton>
+                </Box>
+                <div dangerouslySetInnerHTML={linkedIn}/>
             </Box>
-            <div dangerouslySetInnerHTML={linkedIn}/>
-        </Box>
-    );
+        );
+    }
+
 }
 
 export default Contact;

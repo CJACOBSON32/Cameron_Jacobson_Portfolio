@@ -53,7 +53,7 @@ class NavBar extends React.Component {
 
     render() {
         return(
-            <AppBar id="MainBar" className="App-header" position="sticky" style={{height: this.barHeight}}>
+            <AppBar className="App-header" position="sticky" style={{height: this.barHeight}}>
                 <Container>
                     <StubbyTabs value={this.state.selectedTab} onChange={this.handleChange} centered={true} variant='fullWidth' style={{justifyContent: 'evenly-spaced'}}>
                         <StubbyTab label="Profile"/>
