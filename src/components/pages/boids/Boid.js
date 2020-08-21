@@ -33,7 +33,7 @@ class Boid {
             // Draw a triangle rotated in the direction of velocity
             let theta = this.velocity.heading() + p5.radians(90);
 
-            let color = p5.color("rgba(82,108,193,0.9)");
+            let color = p5.color("rgba(114,114,114,0.8)");
 
             p5.fill(color);
             p5.stroke(color);
@@ -49,12 +49,12 @@ class Boid {
 
         // Draw lines between all boids in range with alphas inversely proportional to their distance
         this.renderLines = function() {
-            let lineColor = p5.color("rgb(255, 128, 26)");
+
 
             this.neighbors.forEach((boid, i) => {
                 // Need to check if their in range again because it may not have been updated
                 if (this.position.dist(boid.position) < this.neighborDist) {
-                    lineColor.alpha = 1 / (this.position.dist(boid.position) / 2);
+                    let lineColor = p5.color(`rgba(255, 128, 26, ${10 / this.position.dist(boid.position)})`);
                     p5.stroke(lineColor);
                     p5.line(this.renderPosition().x, this.renderPosition().y, boid.renderPosition().x, boid.renderPosition().y);
                 }

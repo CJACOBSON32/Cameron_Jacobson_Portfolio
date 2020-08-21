@@ -20,7 +20,7 @@ class BoidChunk {
             }
         }
 
-        // **Use this instead of manually setting the boid chunk**
+        // **Use this instead of manually setting the boid chunk of the boid**
         // Adds the boid and sets its chunk to this
         this.addBoid = function(boid) {
             this.boids.push(boid);

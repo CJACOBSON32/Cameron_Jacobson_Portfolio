@@ -124,12 +124,14 @@ class Flock {
             this.height = this.numRows * this.chunkSize;
         }
 
-        p5.stroke("rgba(0,147,246,1)");
+        let opacityFunc = function(num) {
+            return -(1/(0.3 * Math.pow(num, 2) + 1)) + 1;
+        }
+
         this.renderChunks = function () {
             this.chunks.forEach((chunkRow, row) => {
                 chunkRow.forEach((chunk, col) => {
-                    let fillColor = p5.color("rgba(0,147,246,0)");
-                    // fillColor.alpha = chunk.boids.length;
+                    let fillColor = p5.color(`rgba(0,147,246,${opacityFunc(chunk.boids.length)})`);
                     p5.fill(fillColor);
                     p5.rect(this.position.x + chunk.position().x, this.position.y + chunk.position().y, chunk.width, chunk.height);
                     p5.fill(255)

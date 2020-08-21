@@ -8,6 +8,7 @@ var prevLoop = false;
 class SplashToy extends React.Component {
 
     onScroll(event) {
+        // Checks if the page has been scrolled beneath the splash screen and pauses the SplashToy
         let boundingClient = document.getElementById(sections[0]).getBoundingClientRect();
         if (boundingClient.top < 10 && prevLoop) {
             boidCanvas.noLoop();
