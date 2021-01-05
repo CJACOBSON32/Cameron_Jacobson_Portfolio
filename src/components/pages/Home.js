@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/App.css';
-import Projects from './Projects.js';
+import Projects from './Projects.tsx';
 import Contact from './Contact.js';
 import Splash from "./Splash";
 import Profile from "./Profile";
@@ -22,7 +22,7 @@ var navBarHeight = 48;
 class Home extends React.Component {
 
     componentDidMount() {
-        let navBar = document.getElementById("NavBar");
+        let navBar = document.getElementById("MainBar");
         if (navBar !== null)
             navBarHeight = navBar.clientHeight;
     }
@@ -37,7 +37,7 @@ class Home extends React.Component {
             <div className="Home">
                 <Splash/>
 
-                <NavBar id="NavBar" sections={sections}/>
+                <NavBar sections={sections}/>
 
                 <Profile style={{padding: padding, backgroundColor: lighterColor}} id="Profile"/>
 

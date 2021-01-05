@@ -4,39 +4,65 @@ import AppBar from "@material-ui/core/AppBar";
 import {StubbyTab, StubbyTabs} from "./StubbyTabs";
 import Container from "@material-ui/core/Container";
 
-class NavBar extends React.Component {
-    constructor(props) {
+// Calls document.getElementById but throws an error if the element does not exist
+function safeGetElementByID(id: string): HTMLElement {
+    try {
+        let element = document.getElementById(id);
+        if (element == null) {
+            throw new Error(`${id} is not a valid ElementID`);
+        } else {
+            return element;
+        }
+    } catch(e) {
+        console.log(e);
+    }
+
+    // Code should never get here but Typescript seems to think it should
+    try{
+        throw new Error("If the code has gotten here there is a SERIOUS problem");
+    } catch(e) {
+        console.log(e);
+    }
+
+    return new HTMLElement();
+}
+
+class NavBar extends React.Component<any, any> {
+    pageNameToIndex: Map<string, number>;
+
+    constructor(props: any) {
         super(props);
         this.state = {selectedTab: 0}
         this.handleChange = this.handleChange.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
 
         // Generate Map to get the index of each section
-        this.pageNameToIndex = {};
+        this.pageNameToIndex = new Map();
         for (let i=0; i<this.props.sections.length; i++) {
-            this.pageNameToIndex[this.props.sections[i]] = i;
+            this.pageNameToIndex.set(this.props.sections[i], i);
         }
     }
 
     barHeight = 48;
 
-    handleChange = (event, newValue) => {
+    // Smooth scroll to the section that was clicked in the NavBar. Temporarily remove the handleScroll eventlistener to prevent lag
+    handleChange = (event: Event, newValue: number) => {
         // history.push(`/${indexToPageName[newValue]}`)
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener("scroll", this.handleScroll);
         this.setState({selectedTab: newValue});
-        let relativeElementPos = document.getElementById(this.props.sections[newValue]).getBoundingClientRect().y;
+        let relativeElementPos = safeGetElementByID(this.props.sections[newValue]).getBoundingClientRect().y;
         scroll.scrollTo(window.pageYOffset + relativeElementPos - this.barHeight);
         setTimeout(() => window.addEventListener("scroll", this.handleScroll), 1000);
     }
 
     // Set the selected tab in the navbar to the current section when scrolling
-    handleScroll(event) {
+    handleScroll = (event: Event) => {
         for (let i = 0; i < this.props.sections.length; i++) {
             let section = this.props.sections[i];
-            let boundingClient = document.getElementById(section).getBoundingClientRect();
+            let boundingClient = safeGetElementByID(section).getBoundingClientRect();
             if (boundingClient.bottom > this.barHeight+1) {
                 if (i !== this.state.selectedTab) {
-                    this.setState({selectedTab: this.pageNameToIndex[section]});
+                    this.setState({selectedTab: this.pageNameToIndex.get(section)});
                 }
                 break;
             }
@@ -48,12 +74,12 @@ class NavBar extends React.Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     render() {
         return(
-            <AppBar className="App-header" position="sticky" style={{height: this.barHeight}}>
+            <AppBar id="MainBar" className="App-header" position="sticky" style={{height: this.barHeight}}>
                 <Container>
                     <StubbyTabs value={this.state.selectedTab} onChange={this.handleChange} centered={true} variant='fullWidth' style={{justifyContent: 'evenly-spaced'}}>
                         <StubbyTab label="Profile"/>

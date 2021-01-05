@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import React from "react";
 
-function Section(props) {
+function Section(props: any) {
     const sectionTitle = {
         marginBottom: 20,
     }

@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
-function Project(props) {
+function Project(props: any) {
 
     let width = 350;
 
