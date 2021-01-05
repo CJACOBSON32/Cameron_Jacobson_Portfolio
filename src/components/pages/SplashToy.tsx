@@ -4,7 +4,6 @@ import {setup, draw, windowResized, boidCanvas} from './boids/BoidCanvas';
 import {sections} from "./Home";
 import safeGetElementByID from "../utils/safeGetElementById";
 
-//TODO: Transition all boid js files to Typescript (figure out how p5 js for react handles Typescript)
 let prevLoop: boolean = false;
 
 class SplashToy extends React.Component {
