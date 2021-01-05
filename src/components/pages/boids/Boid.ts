@@ -51,8 +51,8 @@ class Boid {
 
         this.forceMultiplier = 1;       // Multiplies all of the following forces
         this.separationMultiplier = 2;  // Forces boids to separate to desiredSeparation
-        this.cohesionMultiplier = 0.1;  // Forces boids towards one another when within neighborDist
-        this.alignmentMultiplier = 0.2; // Forces boids to turn in the same direction as those within neighborDist
+        this.cohesionMultiplier = 0.5;  // Forces boids towards one another when within neighborDist
+        this.alignmentMultiplier = 1; // Forces boids to turn in the same direction as those within neighborDist
         this.mouseMultiplier = 10;      // Forces boids away from the mouse. Make negative to attract them to the mouse
 
         this.p5 = p5;
