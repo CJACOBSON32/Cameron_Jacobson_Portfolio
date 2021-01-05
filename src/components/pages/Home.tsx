@@ -7,8 +7,9 @@ import Profile from "./Profile";
 import Skills from "./Skills";
 import Section from "../Section";
 import NavBar from "../NavBar";
+import safeGetElementByID from "../utils/safeGetElementById";
 
-const sections = [
+const sections: string[] = [
     "Profile",
     "Skills",
     "Projects",
@@ -17,19 +18,18 @@ const sections = [
 
 //TODO: Re-implement React router
 
-var navBarHeight = 48;
+var navBarHeight: number = 48;
 
 class Home extends React.Component {
 
     componentDidMount() {
-        let navBar = document.getElementById("MainBar");
-        if (navBar !== null)
-            navBarHeight = navBar.clientHeight;
+        let navBar: HTMLElement = safeGetElementByID("MainBar");
+        navBarHeight = navBar.clientHeight;
     }
 
     render() {
-        const lighterColor = "#2b2b2b";
-        const padding = 40;
+        const lighterColor: string = "#2b2b2b";
+        const padding: number = 40;
 
         const lastPageHeight = window.innerHeight - navBarHeight;
 
