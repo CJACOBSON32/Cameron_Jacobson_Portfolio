@@ -6,11 +6,11 @@ import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import Home from "./pages/Home";
 //import {BrowserRouter as HashRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-
+//TODO: Implement React Router
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline /> //TODO: Implement React Router
+            <CssBaseline />
             {/*<HashRouter>*/}
             {/*    <Switch>*/}
             {/*        <Route exact path="/:page?" render={props => <Home {...props}/>}/>*/}
