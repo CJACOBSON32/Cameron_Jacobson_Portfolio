@@ -15,7 +15,7 @@ const StubbyTabs = withStyles((theme) => ({
             //backgroundColor: '#e78e5e',
         },
     },
-}))((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
+}))((props: any) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
 const spacing = 0;
 
@@ -32,6 +32,6 @@ const StubbyTab = withStyles((theme) => ({
             opacity: 1,
         },
     },
-}))((props) => <Tab disableRipple {...props} />);
+}))((props: any) => <Tab disableRipple {...props} />);
 
 export {StubbyTab, StubbyTabs};

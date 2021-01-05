@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/App.css';
-import Projects from './Projects.tsx';
-import Contact from './Contact.js';
+import Projects from './Projects';
+import Contact from './Contact';
 import Splash from "./Splash";
 import Profile from "./Profile";
 import Skills from "./Skills";

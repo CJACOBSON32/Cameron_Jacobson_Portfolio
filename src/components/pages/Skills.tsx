@@ -7,7 +7,7 @@ import theme from "../AppStyles";
 import Card from "@material-ui/core/Card";
 import CSVToArray from "../utils/csvReader";
 
-function Skill(props) {
+function Skill(props: any) {
 
     const gap = 0;
     const height = 40;
@@ -44,7 +44,7 @@ function Skill(props) {
     );
 }
 
-export default function Skills(props) {
+export default function Skills(props: any) {
     // Extract matrix of data from csv
     CSVToArray()
 

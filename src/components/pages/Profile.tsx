@@ -4,7 +4,7 @@ import ProfilePic from "../../Assets/CJacobson_Summer_Lab.jpg";
 import React from "react";
 import "../../css/Resume.css";
 
-function Profile(props) {
+function Profile(props: any) {
     return (
         <Box className="horizontal-flex" {...props}>
             {/*Left Section*/}

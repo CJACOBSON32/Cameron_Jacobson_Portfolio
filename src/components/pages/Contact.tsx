@@ -12,7 +12,7 @@ const linkedIn = {
                   </div>`
 };
 
-function ContactButton(props) {
+function ContactButton(props: any) {
 
     function openLink() {
         window.open(props.link, '_blank');
