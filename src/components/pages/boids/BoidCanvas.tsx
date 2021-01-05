@@ -1,12 +1,13 @@
 import Flock from "./Flock";
 import Boid from "./Boid";
+import * as P5 from "p5";
 
-let flock = undefined;
-let viewPortDimensions = undefined;
-let canvasParent = undefined;
-let boidCanvas = undefined;
+let flock: Flock;
+let viewPortDimensions: P5.Vector;
+let canvasParent: Element;
+let boidCanvas: P5;
 
-function createFlock(p5) {
+function createFlock(p5: P5) {
     let boidSize = 7;
     flock = new Flock(p5, p5.createVector(-boidSize,-boidSize), p5.width + (2*boidSize), p5.height + (2*boidSize));
 
@@ -28,9 +29,9 @@ function createFlock(p5) {
     }
 }
 
-const setup = (p5, canvasParentRef) => {
+const setup = (p5: P5, canvasParentRef: Element) => {
     // use parent to render the canvas in this ref
-    // (without that p5 will render the canvas outside of your component)
+    // (without that p5 will render the canvas outside of the component)
     p5.createCanvas(p5.windowWidth-20, p5.windowHeight).parent(canvasParentRef);
     viewPortDimensions = p5.createVector(p5.windowWidth, p5.windowHeight);
 
@@ -45,7 +46,7 @@ let frame = 0;
 let frameRate = 60;
 let deltaTime = 0;
 
-function performaceDetails(p5) {
+function performaceDetails(p5: P5) {
     // Display dev information (framerate and delta time)
     p5.fill(0);
     p5.rect(0,0,200,50);
@@ -58,7 +59,7 @@ function performaceDetails(p5) {
     p5.text(`Delta t: ${frameRate} millis`, 10, 25);
 }
 
-const draw = (p5) => {
+const draw = (p5: P5) => {
     p5.background(48);
     //flock.renderChunks();
     flock.run();
@@ -70,7 +71,7 @@ const draw = (p5) => {
     frame++;
 };
 
-const windowResized = (p5) => {
+const windowResized = (p5: P5) => {
     p5.resizeCanvas(p5.windowWidth-20, p5.windowHeight);
 
     createFlock(p5);

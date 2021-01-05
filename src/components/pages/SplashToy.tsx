@@ -1,15 +1,17 @@
 import React from "react";
 import Sketch from "react-p5";
-import {setup, draw, windowResized, boidCanvas} from './boids/BoidCanvas.js';
+import {setup, draw, windowResized, boidCanvas} from './boids/BoidCanvas';
 import {sections} from "./Home";
+import safeGetElementByID from "../utils/safeGetElementById";
+
 //TODO: Transition all boid js files to Typescript (figure out how p5 js for react handles Typescript)
-var prevLoop = false;
+let prevLoop: boolean = false;
 
 class SplashToy extends React.Component {
 
-    onScroll(event) {
+    onScroll(event: Event) {
         // Checks if the page has been scrolled beneath the splash screen and pauses the SplashToy
-        let boundingClient = document.getElementById(sections[0]).getBoundingClientRect();
+        let boundingClient = safeGetElementByID(sections[0]).getBoundingClientRect();
         if (boundingClient.top < 10 && prevLoop) {
             boidCanvas.noLoop();
             prevLoop = false;
