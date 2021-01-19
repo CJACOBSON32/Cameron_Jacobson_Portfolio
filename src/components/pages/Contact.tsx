@@ -8,7 +8,7 @@ import EmailIcon from '@material-ui/icons/Email';
 const linkedIn = {
         __html: `<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US"
                       data-type="horizontal" data-theme="dark" data-vanity="cameron-jacobson-006779186">
-                    <a class="LI-simple-link" href=\'https://www.linkedin.com/in/cameron-jacobson-006779186?trk=profile-badge\'>Cameron Jacobson</a>
+                    <a class="LI-simple-link" href='https://www.linkedin.com/in/cameron-jacobson-006779186?trk=profile-badge'>Cameron Jacobson</a>
                   </div>`
 };
 

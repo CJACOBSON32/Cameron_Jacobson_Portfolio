@@ -5,7 +5,6 @@ import Container from "@material-ui/core/Container";
 import React from "react";
 import theme from "../AppStyles";
 import Card from "@material-ui/core/Card";
-import CSVToArray from "../utils/csvReader";
 
 function Skill(props: any) {
 
@@ -22,10 +21,10 @@ function Skill(props: any) {
 
     let stars = [];
 
-    let i = 1;
-    for (i=i; i<=props.rating; i++) stars.push(<StarRounded style={starStyle}/>);
+    let i: number = 1;
+    for (i = i; i<=props.rating; i++) stars.push(<StarRounded style={starStyle}/>);
 
-    for (i=i; i<= 5; i++) stars.push(<StarBorderRounded style={starStyle}/>);
+    for (i = i; i<= 5; i++) stars.push(<StarBorderRounded style={starStyle}/>);
 
     return (
         <Card style={{
@@ -45,8 +44,6 @@ function Skill(props: any) {
 }
 
 export default function Skills(props: any) {
-    // Extract matrix of data from csv
-    CSVToArray()
 
     let skillList = [];
     for (let i=0; i<20; i++) {
