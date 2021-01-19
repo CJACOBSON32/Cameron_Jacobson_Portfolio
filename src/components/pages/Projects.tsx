@@ -47,15 +47,18 @@ class Projects extends React.Component {
 
         const ueWidth: number = 400;
         const iframeWidth: number = ueWidth - 20;
+        const iframeHeight: number = iframeWidth * (315/560);
 
         return (
             <Container>
                 <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap", justifyContent: "center"}}>
-                    <Project width={ueWidth} title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible Hallway."}>
-                        <iframe width={iframeWidth} height={iframeWidth * (315/560)} src="https://www.youtube.com/embed/GyI9xKsXMiQ"
-                                frameBorder="0"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
-                                allowFullScreen/>
+                    <Project title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible Hallway."}>
+                        <Box>
+                            <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/GyI9xKsXMiQ"
+                                    frameBorder="0"
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
+                                    allowFullScreen/>
+                        </Box>
                     </Project>
                     {projects}
                 </Box>
