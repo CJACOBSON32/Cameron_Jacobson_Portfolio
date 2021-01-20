@@ -8,6 +8,7 @@ import Skills from "./Skills";
 import Section from "../Section";
 import NavBar from "../NavBar";
 import safeGetElementByID from "../utils/safeGetElementById";
+import Sketch from "react-p5";
 
 const sections: string[] = [
     "Profile",
