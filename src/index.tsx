@@ -6,12 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import Database from "./components/utils/Database/Database";
 
 // Initialize singletons
-Database.getInstance();
+const db: Database = Database.getInstance();
+db.addEntry();
 
 ReactDOM.render(
     <React.StrictMode>
-        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"/>
-        <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"/>
         <App/>
     </React.StrictMode>,
     document.getElementById('root')

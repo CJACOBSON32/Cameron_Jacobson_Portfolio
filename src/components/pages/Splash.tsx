@@ -10,16 +10,15 @@ import Database from "../utils/Database/Database";
 
 class Splash extends React.Component<any, any> {
 
-    //TODO: Remove this test
-    /**
-     * Adds an entry to the databse whenever someone clicks 'enter'. This is just to test the database
-     * @private
-     */
-    private enter() {
-        const database: Database = Database.getInstance();
-
-        database.addEntry();
-    }
+    // /**
+    //  * Adds an entry to the databse whenever someone clicks 'enter'. This is just to test the database
+    //  * @private
+    //  */
+    // private enter() {
+    //     const database: Database = Database.getInstance();
+    //
+    //     database.addEntry();
+    // }
 
     render() {
         return (
@@ -37,7 +36,7 @@ class Splash extends React.Component<any, any> {
                 }}>
                     <Typography variant="h2" component="div" style={{textAlign: "center", userSelect: "none" }}>Cameron Jacobson's Portfolio</Typography>
                     <ScrollLink activeClass="Active" to="MainBar" spy={true} smooth={true}>
-                        <Button onClick={this.enter} variant="outlined" style={{paddingRight: 5, borderColor: theme.palette.secondary.main, borderWidth: 3}}>
+                        <Button variant="outlined" style={{paddingRight: 5, borderColor: theme.palette.secondary.main, borderWidth: 3}}>
                             <Typography variant="h5">Enter</Typography>
                             <ArrowDropDownIcon fontSize="large" style={{marginLeft: 5}}/>
                         </Button>

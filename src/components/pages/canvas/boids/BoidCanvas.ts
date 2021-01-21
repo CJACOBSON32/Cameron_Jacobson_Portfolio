@@ -1,13 +1,13 @@
 import Flock from "./Flock";
 import Boid from "./Boid";
 import * as P5 from "p5";
-import P5Canvas from "../P5Canvas";
+import ReactiveP5Canvas from "../ReactiveP5Canvas";
 
 let self: BoidCanvas;
 
 let boidCanvasRef: P5;
 
-class BoidCanvas implements P5Canvas {
+class BoidCanvas implements ReactiveP5Canvas {
 
     private flock: Flock;
 
@@ -21,7 +21,7 @@ class BoidCanvas implements P5Canvas {
         // (without that p5 will render the canvas outside of the component)
         p5.createCanvas(p5.windowWidth-20, p5.windowHeight).parent(canvasParentRef);
 
-        self.createFlock(p5);
+        BoidCanvas.createFlock(p5);
 
         boidCanvasRef = p5;
     }
@@ -31,14 +31,14 @@ class BoidCanvas implements P5Canvas {
         //flock.renderChunks();
         self.flock.run();
 
-        //performaceDetails(p5);
+        //BoidCanvas.performaceDetails(p5);
         // NOTE: Do not use setState in the draw function or in functions that are executed
         // in the draw function...
         // please use normal variables or class properties for these purposes
         self.frame++;
     }
 
-    createFlock(p5: P5) {
+    private static createFlock(p5: P5) {
         let boidSize = 7;
         self.flock = new Flock(p5, p5.createVector(-boidSize,-boidSize), p5.width + (2*boidSize), p5.height + (2*boidSize));
 
@@ -80,7 +80,7 @@ class BoidCanvas implements P5Canvas {
     windowResized(p5: P5)  {
         p5.resizeCanvas(p5.windowWidth-20, p5.windowHeight);
 
-        self.createFlock(p5);
+        BoidCanvas.createFlock(p5);
     }
 }
 

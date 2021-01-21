@@ -41,6 +41,33 @@ class Database {
         return Database.instance;
     }
 
+    private static checkBrowser(): string {
+        if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 )
+        {
+            return "Opera";
+        }
+        else if(navigator.userAgent.indexOf("Chrome") !== -1 )
+        {
+            return "Chrome";
+        }
+        else if(navigator.userAgent.indexOf("Safari") !== -1)
+        {
+            return "Safari";
+        }
+        else if(navigator.userAgent.indexOf("Firefox") !== -1 )
+        {
+            return "Firefox";
+        }
+        else if(navigator.userAgent.indexOf("MSIE") !== -1 ) //IF IE > 10
+        {
+            return "Internet Explorer";
+        }
+        else
+        {
+            return "unknown"
+        }
+    }
+
     async addEntry() {
         const entries: firebase.firestore.CollectionReference<firebase.firestore.DocumentData> = this.fireStoreDB.collection('entries');
 
@@ -68,7 +95,9 @@ class Database {
 
         await newEntry.set({
             time: new Date(),
-            ipv4: await publicIp.v4()
+            ipv4: await publicIp.v4(),
+            browser: Database.checkBrowser(),
+            platform: navigator.platform
         });
     }
 }
