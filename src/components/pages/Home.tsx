@@ -8,7 +8,6 @@ import Skills from "./Skills";
 import Section from "../Section";
 import NavBar from "../NavBar";
 import safeGetElementByID from "../utils/safeGetElementById";
-import Sketch from "react-p5";
 
 const sections: string[] = [
     "Profile",
@@ -50,7 +49,7 @@ class Home extends React.Component {
                     <Projects/>
                 </Section>
 
-                <Section style={{padding: padding, height: lastPageHeight }} id="Contact" title="Contact">
+                <Section style={{padding: padding, height: lastPageHeight}} id="Contact" title="Contact">
                     <Contact/>
                 </Section>
             </div>
