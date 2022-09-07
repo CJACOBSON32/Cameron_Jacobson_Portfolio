@@ -46,11 +46,24 @@ function Skill(props: any) {
 export default function Skills(props: any) {
 
     let skillList = [];
-    for (let i=0; i<20; i++) {
-        let rating = Math.floor(Math.random() * 6);
-        let title = `Skill ${i+1}`;
-        skillList.push(<Skill rating={rating}>{title}</Skill>);
-    }
+    // for (let i=0; i<20; i++) {
+    //     let rating = Math.floor(Math.random() * 6);
+    //     let title = `Skill ${i+1}`;
+    //     skillList.push(<Skill rating={rating}>{title}</Skill>);
+    // }
+
+    skillList.push(<Skill rating={5}>Typescript</Skill>);
+    skillList.push(<Skill rating={5}>Javascript</Skill>);
+    skillList.push(<Skill rating={5}>Java</Skill>);
+    skillList.push(<Skill rating={5}>Python</Skill>);
+    skillList.push(<Skill rating={5}>C</Skill>);
+    skillList.push(<Skill rating={4}>C#</Skill>);
+    skillList.push(<Skill rating={3}>C++</Skill>);
+    skillList.push(<Skill rating={3}>Kotlin</Skill>);
+    skillList.push(<Skill rating={3}>Matlab</Skill>);
+    skillList.push(<Skill rating={2}>R</Skill>);
+    skillList.push(<Skill rating={2}>Lisp</Skill>);
+    skillList.push(<Skill rating={1}>Maple</Skill>);
 
     return (
         <Box {...props}>

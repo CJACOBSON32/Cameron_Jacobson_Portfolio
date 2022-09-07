@@ -1,10 +1,11 @@
 Skill,Rating,Type
+Typescript,5,Language
+Javascript,5,Language
 Java,5,Language
+Python,5,Language
 C,4,Language
-Python,4,Language
 C#,5,Language
 C++,3,Language
-Javascript,2,Language
 MatLab,2,Language
 Lisp,2,Language
 Maple,1,Language

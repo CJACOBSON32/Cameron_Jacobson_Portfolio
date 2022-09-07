@@ -9,6 +9,7 @@ let boidCanvasRef: P5;
 
 class BoidCanvas implements ReactiveP5Canvas {
 
+    public boidCount = 200;
     private flock: Flock;
 
     constructor() {
@@ -28,7 +29,7 @@ class BoidCanvas implements ReactiveP5Canvas {
 
     draw(p5: P5): void {
         p5.background(48);
-        //flock.renderChunks();
+        //self.flock.renderChunks();
         self.flock.run();
 
         //BoidCanvas.performaceDetails(p5);
@@ -44,7 +45,7 @@ class BoidCanvas implements ReactiveP5Canvas {
 
         let spawnWidth = 0.3 * p5.width;
         let spawnHeight = 0.3 * p5.height;
-        for (let i=0; i<150; i++) {
+        for (let i=0; i<self.boidCount; i++) {
             let newBoid = new Boid(p5, i, p5.createVector(
                 (Math.random() * spawnWidth) + (p5.width / 2) - (spawnWidth/2),
                 (Math.random() * spawnHeight) + (p5.height / 2) - (spawnHeight/2)));

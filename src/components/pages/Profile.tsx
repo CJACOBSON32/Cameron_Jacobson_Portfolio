@@ -12,7 +12,7 @@ function Profile(props: any) {
                 <Typography variant="h4">About Me</Typography>
                 <div className="content">
                     <p>
-                        An enthusiastic undergraduate looking for a summer internship in computer science.
+                        A full stack web, android, and systems engineer looking for a fulltime position in the summer of 2023.
                     </p>
                 </div>
             </Box>
@@ -30,7 +30,7 @@ function Profile(props: any) {
                     </div>
                     <div className="detail-field">
                         <Typography variant="h6">Location</Typography>
-                        <p>Prospect Heights, Brooklyn, NY</p>
+                        <p>Brooklyn, NY</p>
                     </div>
                 </div>
             </Box>
