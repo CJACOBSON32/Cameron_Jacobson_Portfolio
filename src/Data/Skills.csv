@@ -3,9 +3,19 @@ Typescript,5,Language
 Javascript,5,Language
 Java,5,Language
 Python,5,Language
+<<<<<<< Updated upstream
 C,4,Language
+=======
+>>>>>>> Stashed changes
 C#,5,Language
+C,4,Language
 C++,3,Language
+<<<<<<< Updated upstream
 MatLab,2,Language
+=======
+Kotlin,3,Language
+MatLab,3,Language
+R,2,Language
+>>>>>>> Stashed changes
 Lisp,2,Language
 Maple,1,Language
