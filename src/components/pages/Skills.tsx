@@ -22,9 +22,9 @@ function Skill(props: any) {
     let stars = [];
 
     let i: number = 1;
-    for (i = i; i<=props.rating; i++) stars.push(<StarRounded style={starStyle}/>);
+    for (; i<=props.rating; i++) stars.push(<StarRounded style={starStyle}/>);
 
-    for (i = i; i<= 5; i++) stars.push(<StarBorderRounded style={starStyle}/>);
+    for (; i<= 5; i++) stars.push(<StarBorderRounded style={starStyle}/>);
 
     return (
         <Card style={{
