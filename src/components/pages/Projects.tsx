@@ -22,7 +22,7 @@ function Project(props: any) {
             </p>
             {props.children}
             <Box marginTop="20px" flexGrow="1" style={{display: "flex", alignItems: "flex-end", justifyContent: "flex-end"}}>
-                <Button variant="text" color="primary">Expand</Button>
+                <Button variant="text" color="primary" href={props.link}>Go To</Button>
             </Box>
         </Card>
     );
@@ -31,27 +31,13 @@ function Project(props: any) {
 class Projects extends React.Component {
 
     render() {
-        const numberOfProjects: number = 9;
-        let projects: JSX.Element[] = [];
-
-        for (let i: number = 1; i <= numberOfProjects; i++) {
-            let title = `Project ${i}`;
-            projects.push(
-                <Project title={title}
-                         description={"Lorem ipsum dolor sit amet, no cum clita consequat, nostrud tractatos adolescens eam ei. At consulatu"
-                         + "honestatis accommodare has. Ei cibo eirmod expetenda sit, ea choro dicam invidunt sit. Luptatum deseruisse"
-                         + "ut his, eum ne ponderum scriptorem repudiandae. Est ei accusata consulatu, dolor fabellas sit ut, vis ad"
-                         + "probo erant partem. Mea ea enim nibh fuisset."}/>
-            );
-        }
-
         const ueWidth: number = 400;
         const iframeWidth: number = ueWidth - 20;
         const iframeHeight: number = iframeWidth * (315/560);
 
         return (
             <Container>
-                <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap", justifyContent: "center"}}>
+                <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap", justifyContent: "center", alignItems: "center", flexDirection: "column", height: "1100px"}}>
                     <Project title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible Hallway."}>
                         <Box>
                             <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/GyI9xKsXMiQ"
@@ -60,7 +46,48 @@ class Projects extends React.Component {
                                     allowFullScreen/>
                         </Box>
                     </Project>
-                    {projects}
+	                <Project
+		                title="Emoji Place"
+	                    description={`
+		                    Welcome to Emoji Place! Similar to r/place, but rather than putting a colored square on a grid, 
+		                    the user can put an emoji. r/place was a project by reddit that allowed users to draw on a 1000 
+		                    by 1000 pixel canvas. Each user was able to place one pixel every 5 minutes. Our project is 
+		                    targeted towards an audience similar to Reddit's for the purpose of artistic creativity.
+	                    `}
+	                    link={"https://github.com/CJACOBSON32/cs4241_emoji_place"}>
+	                </Project>
+	                <Project
+		                title="Inkboard"
+		                description={`
+		                    Inkboard is a synced Canvas for people to work together and contribute to a collaborative 
+		                    drawing. Users can log in draw strokes with custom colors and thickness. Users can also clear 
+		                    the canvas of strokes that they have made. The server will differentiate which strokes were 
+		                    added by which user and update the database accordingly.
+	                    `}
+		                link={"https://github.com/CJACOBSON32/cs4241_Inkboard"}>
+	                </Project>
+	                <Project
+		                title="Project Hexabase"
+		                description={`
+		                    Projects hexabase is an ongoing unity package focused on the procedural animation of 
+		                    creatures with legs.
+	                    `}
+		                link={"https://github.com/CJACOBSON32/project_hexabase"}>
+		                <video src={"https://user-images.githubusercontent.com/34342644/188280432-5cdf1e99-7fea-4355-a165-1a62f281211b.mp4"}
+		                    autoPlay={true} playsInline={true} loop={true}></video>
+	                </Project>
+	                <Project
+		                title="Project Geoblade"
+		                description={`
+		                    A 3D third-person action-adventure game in which audio plays an integral role. The game 
+		                    blends melee combat and puzzle-solving gameplay in a narratively rich, location-driven story.
+	                    `}
+		                link={"https://wp.wpi.edu/showfest/project/geoblade/"}>
+		                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/z4BUox3BMmw"
+		                        frameBorder="0"
+		                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
+		                        allowFullScreen/>
+	                </Project>
                 </Box>
             </Container>
         );
