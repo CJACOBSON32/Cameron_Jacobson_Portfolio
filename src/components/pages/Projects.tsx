@@ -38,7 +38,7 @@ class Projects extends React.Component {
         return (
             <Container>
                 <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap", justifyContent: "center", alignItems: "center", flexDirection: "column", height: "1100px"}}>
-                    <Project title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible Hallway."}>
+                    <Project title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible hallway."}>
                         <Box>
                             <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/GyI9xKsXMiQ"
                                     frameBorder="0"
@@ -59,7 +59,7 @@ class Projects extends React.Component {
 	                <Project
 		                title="Inkboard"
 		                description={`
-		                    Inkboard is a synced Canvas for people to work together and contribute to a collaborative 
+		                    Inkboard is a synced canvas for people to work together and contribute to a collaborative 
 		                    drawing. Users can log in draw strokes with custom colors and thickness. Users can also clear 
 		                    the canvas of strokes that they have made. The server will differentiate which strokes were 
 		                    added by which user and update the database accordingly.
@@ -69,7 +69,7 @@ class Projects extends React.Component {
 	                <Project
 		                title="Project Hexabase"
 		                description={`
-		                    Projects hexabase is an ongoing unity package focused on the procedural animation of 
+		                    Project Hexabase is an ongoing unity package focused on the procedural animation of 
 		                    creatures with legs.
 	                    `}
 		                link={"https://github.com/CJACOBSON32/project_hexabase"}>
@@ -87,6 +87,15 @@ class Projects extends React.Component {
 		                        frameBorder="0"
 		                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
 		                        allowFullScreen/>
+	                </Project>
+	                <Project
+		                title="Bitcoin Blitz"
+		                description={`
+		                    Bitcoin Blitz is a satirical mobile idle game centered around mining fictional Bitcoin. 
+		                    The gameplay loop revolves around actively tapping to increase the user’s bitcoin. This game 
+		                    was created entirely using the Native Android SDK.
+	                    `}
+		                link={"https://github.com/CJACOBSON32/Bitcoin_Blitz"}>
 	                </Project>
                 </Box>
             </Container>
