@@ -1,6 +1,6 @@
 
 import firebase from "firebase/app";
-import "firebase/firestore"
+import firestore, {collection, getDoc} from "firebase/firestore"
 import publicIp from "public-ip";
 
 class Database {
@@ -21,13 +21,13 @@ class Database {
 
     // -- Instance fields --
 
-    fireStoreDB: firebase.firestore.Firestore;
+    fireStoreDB: firestore.Firestore;
 
     constructor() {
         // Initialize Firebase
         firebase.initializeApp(Database.firebaseConfig);
 
-        this.fireStoreDB = firebase.firestore();
+        this.fireStoreDB = firestore.getFirestore();
     }
 
     /**
@@ -69,14 +69,14 @@ class Database {
     }
 
     async addEntry() {
-        const entries: firebase.firestore.CollectionReference<firebase.firestore.DocumentData> = this.fireStoreDB.collection('entries');
+        const entries = collection(this.fireStoreDB, 'entries');
 
         // Get references to the Entry-Count Document
-        const entryCountRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = entries.doc("entry-count");
-        let entryCount: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> = await entryCountRef.get();
+	    const entryCountRef = 
+        let entryCount = await getDoc(entries);
 
         // If the entry-count document does not yet exist, initialize it with 0 entries
-        if(!entryCount.exists) {
+        if(!entryCount.exists()) {
             await entryCountRef.set({
                 numberOfEntries: 0
             });

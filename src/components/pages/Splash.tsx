@@ -24,24 +24,24 @@ class Splash extends React.Component<any, any> {
         return (
             <Box>
                 <SplashToy/>
-                <Box style={{
-                    height: "100vh",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 20,
-                    marginTop: "-100vh",
-                    position: "relative"
-                }}>
-                    <Typography variant="h2" component="div" style={{textAlign: "center", userSelect: "none" }}>Cameron Jacobson's Portfolio</Typography>
-                    <ScrollLink activeClass="Active" to="MainBar" spy={true} smooth={true}>
-                        <Button variant="outlined" style={{paddingRight: 5, borderColor: theme.palette.secondary.main, borderWidth: 3}}>
-                            <Typography variant="h5">Enter</Typography>
-                            <ArrowDropDownIcon fontSize="large" style={{marginLeft: 5}}/>
-                        </Button>
-                    </ScrollLink>
-                </Box>
+                {/*<Box style={{*/}
+                {/*    height: "100vh",*/}
+                {/*    display: "flex",*/}
+                {/*    flexDirection: "column",*/}
+                {/*    justifyContent: "center",*/}
+                {/*    alignItems: "center",*/}
+                {/*    gap: 20,*/}
+                {/*    marginTop: "-100vh",*/}
+                {/*    position: "relative"*/}
+                {/*}}>*/}
+                {/*    <Typography variant="h2" component="div" style={{textAlign: "center", userSelect: "none" }}>Cameron Jacobson's Portfolio</Typography>*/}
+                {/*    <ScrollLink activeClass="Active" to="MainBar" spy={true} smooth={true}>*/}
+                {/*        <Button variant="outlined" style={{paddingRight: 5, borderColor: theme.palette.secondary.main, borderWidth: 3}}>*/}
+                {/*            <Typography variant="h5">Enter</Typography>*/}
+                {/*            <ArrowDropDownIcon fontSize="large" style={{marginLeft: 5}}/>*/}
+                {/*        </Button>*/}
+                {/*    </ScrollLink>*/}
+                {/*</Box>*/}
             </Box>
         );
     }

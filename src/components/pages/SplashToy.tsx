@@ -31,7 +31,8 @@ class SplashToy extends React.Component {
     }
 
     render() {
-        return <Sketch setup={this.boidCanvas.setup} draw={this.boidCanvas.draw} windowResized={this.boidCanvas.windowResized}/>;
+        // @ts-ignore
+	    return <Sketch setup={this.boidCanvas.setup} draw={this.boidCanvas.draw} windowResized={this.boidCanvas.windowResized}/>;
     }
 }
 
