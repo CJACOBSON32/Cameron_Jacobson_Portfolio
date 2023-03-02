@@ -1,7 +1,7 @@
 
-import firebase from "firebase/app";
-import "firebase/firestore"
-import publicIp from "public-ip";
+import { getFirestore, collection, Firestore, getDoc, doc, setDoc } from "firebase/firestore";
+import {publicIpv4} from "public-ip";
+import { initializeApp } from "firebase/app";
 
 class Database {
 
@@ -17,17 +17,15 @@ class Database {
     };
 
     private static instance: Database;
-
-
     // -- Instance fields --
 
-    fireStoreDB: firebase.firestore.Firestore;
+    fireStoreDB: Firestore;
 
     constructor() {
         // Initialize Firebase
-        firebase.initializeApp(Database.firebaseConfig);
+        const app = initializeApp(Database.firebaseConfig);
 
-        this.fireStoreDB = firebase.firestore();
+        this.fireStoreDB = getFirestore(app);
     }
 
     /**
@@ -42,7 +40,7 @@ class Database {
     }
 
     private static checkBrowser(): string {
-        if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 )
+        if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) !== -1 )
         {
             return "Opera";
         }
@@ -69,33 +67,33 @@ class Database {
     }
 
     async addEntry() {
-        const entries: firebase.firestore.CollectionReference<firebase.firestore.DocumentData> = this.fireStoreDB.collection('entries');
+        const entries = collection(this.fireStoreDB, 'entries');
 
         // Get references to the Entry-Count Document
-        const entryCountRef: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = entries.doc("entry-count");
-        let entryCount: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> = await entryCountRef.get();
+        const entryCountRef = doc(entries, "entry-count");
+        let entryCount = await getDoc(entryCountRef);
 
         // If the entry-count document does not yet exist, initialize it with 0 entries
         if(!entryCount.exists) {
-            await entryCountRef.set({
+            await setDoc(entryCountRef, {
                 numberOfEntries: 0
             });
 
-            entryCount = await entryCountRef.get();
+            entryCount = await getDoc(entryCountRef);
         }
 
         // Increment the numberOfEntries Field
         let size: number = entryCount.data()!.numberOfEntries + 1;
-        await entryCountRef.set({
+        await setDoc(entryCountRef, {
             numberOfEntries: size
         });
 
         // Log the date and time of the new entry
-        const newEntry: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> = entries.doc(`entry-${size}`);
+        const newEntry = doc(entries, `entry-${size}`);
 
-        await newEntry.set({
+        await setDoc(newEntry, {
             time: new Date(),
-            ipv4: await publicIp.v4(),
+            ipv4: publicIpv4(),
             browser: Database.checkBrowser(),
             platform: navigator.platform
         });

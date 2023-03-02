@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Children} from 'react';
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import {Button} from "@material-ui/core";
+import ReactDOM from "react-dom";
 
 const defaultWidth: number = 350;
 
@@ -22,7 +23,7 @@ function Project(props: any) {
             </p>
             {props.children}
             <Box marginTop="20px" flexGrow="1" style={{display: "flex", alignItems: "flex-end", justifyContent: "flex-end"}}>
-                <Button variant="text" color="primary" href={props.link}>Go To</Button>
+                <Button variant="contained" color="primary" href={props.link} target="_blank" >Go To</Button>
             </Box>
         </Card>
     );
@@ -31,13 +32,20 @@ function Project(props: any) {
 class Projects extends React.Component {
 
     render() {
-        const ueWidth: number = 400;
-        const iframeWidth: number = ueWidth - 20;
-        const iframeHeight: number = iframeWidth * (315/560);
 
         return (
             <Container>
-                <Box style={{display: "flex", gap: 20, margin: 20, flexWrap: "wrap", justifyContent: "center", alignItems: "center", flexDirection: "column", height: "1100px"}}>
+                <Box style={{
+					display: "flex",
+	                gap: 20,
+	                margin: 20,
+	                flexWrap: "wrap",
+	                justifyContent: "flex-start",
+	                alignItems: "center",
+	                alignContent: "center",
+	                flexDirection: "column",
+	                height: "800px"
+				}}>
                     <Project title="Unreal Engine 4 Hallway Illusion" description={"I created this in Unreal engine 4. It utilizes some trigger volumes to give the illusion of an impossible hallway."}>
                         <Box>
                             <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/GyI9xKsXMiQ"
@@ -64,7 +72,7 @@ class Projects extends React.Component {
 		                    the canvas of strokes that they have made. The server will differentiate which strokes were 
 		                    added by which user and update the database accordingly.
 	                    `}
-		                link={"https://github.com/CJACOBSON32/cs4241_Inkboard"}>
+		                link={"https://inkboard.glitch.me/"}>
 	                </Project>
 	                <Project
 		                title="Project Hexabase"
