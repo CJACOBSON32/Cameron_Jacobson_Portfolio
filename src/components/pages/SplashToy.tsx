@@ -3,6 +3,7 @@ import Sketch from "react-p5";
 import {BoidCanvas, boidCanvasRef} from './canvas/boids/BoidCanvas';
 import {sections} from "./Home";
 import safeGetElementByID from "../utils/safeGetElementById";
+import { Box } from "@material-ui/core";
 
 let prevLoop: boolean = false;
 
@@ -31,7 +32,9 @@ class SplashToy extends React.Component {
     }
 
     render() {
-        return <Sketch setup={this.boidCanvas.setup} draw={this.boidCanvas.draw} windowResized={this.boidCanvas.windowResized}/>;
+        // @ts-ignore
+	    return <Sketch setup={this.boidCanvas.setup} draw={this.boidCanvas.draw} windowResized={this.boidCanvas.windowResized}/>;
+	    // return <Box>Placeholder</Box>
     }
 }
 
