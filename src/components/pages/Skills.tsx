@@ -8,23 +8,7 @@ import Card from "@material-ui/core/Card";
 
 function Skill(props: any) {
 
-    const gap = 0;
-    const height = 40;
     const padding = 10;
-    const contentHeight = height - (2*padding);
-
-    const starStyle = {
-        marginRight: gap-4,
-        marginLeft: gap-4,
-        height: contentHeight
-    };
-
-    let stars = [];
-
-    let i: number = 1;
-    for (; i<=props.rating; i++) stars.push(<StarRounded style={starStyle}/>);
-
-    for (; i<= 5; i++) stars.push(<StarBorderRounded style={starStyle}/>);
 
     return (
         <Card style={{
@@ -36,9 +20,6 @@ function Skill(props: any) {
             alignItems: "center"
         }}>
             <Typography style={{fontSize: "100%"}}>{props.children}</Typography>
-            <div style={{display: "flex", alignItems: "center"}}>
-                {stars}
-            </div>
         </Card>
     );
 }
@@ -52,18 +33,18 @@ export default function Skills(props: any) {
     //     skillList.push(<Skill rating={rating}>{title}</Skill>);
     // }
 
-    skillList.push(<Skill rating={5}>Typescript</Skill>);
-    skillList.push(<Skill rating={5}>Javascript</Skill>);
-    skillList.push(<Skill rating={5}>Java</Skill>);
-    skillList.push(<Skill rating={5}>Python</Skill>);
-    skillList.push(<Skill rating={5}>C</Skill>);
-    skillList.push(<Skill rating={4}>C#</Skill>);
-    skillList.push(<Skill rating={3}>C++</Skill>);
-    skillList.push(<Skill rating={3}>Kotlin</Skill>);
-    skillList.push(<Skill rating={3}>Matlab</Skill>);
-    skillList.push(<Skill rating={2}>R</Skill>);
-    skillList.push(<Skill rating={2}>Lisp</Skill>);
-    skillList.push(<Skill rating={1}>Maple</Skill>);
+    skillList.push(<Skill>Typescript</Skill>);
+    skillList.push(<Skill>Javascript</Skill>);
+    skillList.push(<Skill>Java</Skill>);
+    skillList.push(<Skill>Python</Skill>);
+    skillList.push(<Skill>C</Skill>);
+    skillList.push(<Skill>C#</Skill>);
+    skillList.push(<Skill>C++</Skill>);
+    skillList.push(<Skill>Kotlin</Skill>);
+    skillList.push(<Skill>Matlab</Skill>);
+    skillList.push(<Skill>R</Skill>);
+    skillList.push(<Skill>Lisp</Skill>);
+    skillList.push(<Skill>Maple</Skill>);
 
     return (
         <Box {...props}>
