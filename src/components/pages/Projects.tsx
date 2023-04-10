@@ -72,7 +72,7 @@ class Projects extends React.Component {
 		                    the canvas of strokes that they have made. The server will differentiate which strokes were 
 		                    added by which user and update the database accordingly.
 	                    `}
-		                link={"https://inkboard.glitch.me/"}>
+		                link={"https://github.com/CJACOBSON32/Inkboard"}>
 	                </Project>
 	                <Project
 		                title="Project Hexabase"
